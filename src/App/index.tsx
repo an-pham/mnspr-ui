@@ -1,16 +1,18 @@
 import React from 'react';
+import Board from './Board';
+import { Layout } from './style';
 
-import Board from '../App/Board/index';
+function App() {
+  return (
+    <Layout className="App">
+      <section className='game-board'>
+        <Board {...defaultProps} />
+      </section>
+    </Layout>
+  );
+}
 
-export default {
-  title: 'Example/Board',
-  component: Board,
-};
-
-const Template = (args) => <Board {...args} />;
-
-export const Main = Template.bind({});
-Main.args = {
+let defaultProps = {
   cells: [
     [0, 0, 0, 0, 0, 1, -1, 2, 1, 1],
     [0, 1, 1, 1, 0, 2, 2, 3, -1, 1],
@@ -24,5 +26,8 @@ Main.args = {
     [0, 1, -1, 1, 1, -1, 1, 0, 1, 1]
   ],
   rows: 10,
-  cols: 10
+  cols: 10,
+  disabledAll: false
 };
+
+export default App
